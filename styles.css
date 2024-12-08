@@ -1,0 +1,129 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  color: #2c3e50;
+  overflow-x: hidden;
+}
+
+/* Header with Navigation */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(90deg, #2b7a68, #1864d7);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+  margin-right: 60px;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffdf00;
+}
+
+body {
+  padding-top: 80px;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.submit {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #2b7a68, #1a6ce7);
+  align-content: center;
+  padding-left: 330px;
+}
+
+.submit :hover {
+  background: linear-gradient(90deg, #5dc5ad, #6ba1f4);
+}
+
+/* Header */
+header h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2b7a68;
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+label {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+select {
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Submit Button */
+button {
+  font-size: 1.1rem;
+  background: #2b7a68;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #3984f5;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: white;
+}

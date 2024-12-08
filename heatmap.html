@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="heatmapstyles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <!-- Spending Wheel (Pie Chart) -->
+    <h2>Spending Breakdown</h2>
+    <canvas id="spendingWheel"></canvas>
+
+    <!-- Daily Expense Heatmap -->
+    <h2>Daily Expense Trends</h2>
+    <div id="heatmap"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
+    // Fetch and render the spending wheel (pie chart)
+    fetch('get_expenses.php')
+      .then(response => response.json())
+      .then(data => {
+        const ctx = document.getElementById('spendingWheel').getContext('2d');
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: data.categories,
+            datasets: [{
+              data: data.amounts,
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+            }]
+          },
+          options: {
+            responsive: true
+          }
+        });
+      });
+
+    // Fetch and render the heatmap for daily expenses
+    fetch('get_heatmap_data.php')
+      .then(response => response.json())
+      .then(data => {
+        const heatmap = d3.select('#heatmap')
+          .append('svg')
+          .attr('width', 500)
+          .attr('height', 300);
+
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const maxExpense = d3.max(data, d => d.amount);
+
+        heatmap.selectAll('rect')
+          .data(data)
+          .enter()
+          .append('rect')
+          .attr('x', d => days.indexOf(d.day) * 50)
+          .attr('y', d => 300 - (d.amount / maxExpense) * 300)
+          .attr('width', 40)
+          .attr('height', d => (d.amount / maxExpense) * 300)
+          .attr('fill', 'steelblue');
+      });
+  </script>
+</body>
+
+</html>
